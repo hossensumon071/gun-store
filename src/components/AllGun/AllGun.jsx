@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import SingleGun from '../SIngleGun/SingleGun';
 import './AllGun.css';
 
-const AllGun = () => {
+const AllGun = ({countIncrease}) => {
   const [guns, setGuns] = useState([]);
   useEffect(()=>{
     fetch(`https://raw.githubusercontent.com/mir-hussain/guns/main/data.json`)
@@ -16,7 +16,7 @@ const AllGun = () => {
       <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-5">
       {
         guns.map((gun) => (
-          <SingleGun gun={gun} key={gun.id}/>
+          <SingleGun gun={gun} key={gun.id} countIncrease={countIncrease}/>
         ))
       }
       </div>
