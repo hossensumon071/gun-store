@@ -1,9 +1,12 @@
-import React from 'react';
-import './SingleGun.css'
+import React, {useState} from 'react';
+import Modal from '../Modal/Modal';
+import './SingleGun.css';
 
 const SingleGun = (props) => {
+  const [modalData, setModalData] = useState({});
+  // console.log(modalData)
   const { gun, countIncrease } = props;
-  const {action, bullet, category, img, name, price} = gun
+  const {action, bullet, img, name} = gun
   return (
     <div>
       <div className="card w-full h-full bg-base-100 shadow-xl">
@@ -21,11 +24,20 @@ const SingleGun = (props) => {
           <div className="badge badge-outline">{bullet}</div>
           <div className="mt-4">
             <button onClick={() => countIncrease()} className="btn btn-sm btn-dager mr-2">Add To Cart</button>
-            <button className="btn btn-sm btn-success">Details</button>
+            {/* The button to open modal */}
+            <label 
+            onClick={()=> setModalData(gun)}
+            htmlFor="my-modal-4"
+            className="btn btn-sm btn-success">
+              Details
+            </label>
           </div>
          </div>
       </div>
-    </div>
+      </div>
+      {
+        modalData && <Modal data={modalData} setModalData={setModalData}></Modal>
+      }
     </div>
   );
 };
