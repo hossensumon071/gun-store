@@ -1,8 +1,11 @@
+import AllGun from "./components/AllGun/AllGun";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-     <h1>Hello world</h1>
+    <div>
+      <Navbar></Navbar>
+      <AllGun></AllGun>
     </div>
   );
 }
